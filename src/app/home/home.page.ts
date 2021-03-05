@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AlertController } from "@ionic/angular";
 
 interface ProductData {
   Name: string;
@@ -14,6 +15,13 @@ interface ProductData {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+@Component({
+  selector: "confirm-alert",
+   templateUrl: "home.page.html",
+   styleUrls: ["./home.page.scss"]
+})
+
 export class HomePage {
   productList = [];
   productData: ProductData;
@@ -80,4 +88,9 @@ export class HomePage {
     this.firebaseService.update_product(recordRow.id, record);
     recordRow.isEdit = false;
   }
+
+
+
+
+
 }
