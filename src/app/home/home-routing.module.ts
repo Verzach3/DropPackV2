@@ -4,7 +4,13 @@ import { HomePage } from './home.page';
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: () => import('./home.module').then( m => m.HomePageModule)
+  },
+  {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
     component: HomePage,
   }
 ];
