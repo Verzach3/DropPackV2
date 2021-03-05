@@ -38,8 +38,9 @@
   <ion-card *ngFor="let item of productList" color="primary">
     <span *ngIf="!item.isEdit; else elseBlock">
       <ion-card-header>
-        <ion-card-title>{{item.Name}} of {{item.Age}} years</ion-card-title>
-        <ion-card-subtitle>From: {{item.Address}}</ion-card-subtitle>
+        <ion-card-title>{{item.Name}}</ion-card-title>
+        <ion-card-subtitle>Precio: {{item.Age}}</ion-card-subtitle>
+        <ion-card-subtitle>Para: {{item.Address}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
 
@@ -59,16 +60,16 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                Edit
+                Editar
               </ion-col>
               <ion-col>
                 <ion-button fill="solid" color="medium" size="small" (click)="item.isEdit = false">
-                  Cancel
+                  Cancelar
                 </ion-button>
               </ion-col>
               <ion-col>
                 <ion-button fill="solid" color="success" size="small" (click)="UpdateRecord(item)">
-                  Update
+                  Actualizar
                 </ion-button>
               </ion-col>
             </ion-row>
@@ -77,7 +78,7 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-label><strong>Name</strong></ion-label>
+          <ion-label><strong>Nombre</strong></ion-label>
           <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
         </ion-item>
         <ion-item>
