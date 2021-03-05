@@ -20,13 +20,19 @@
 
     <ion-item>
       <ion-label position="floating">Precio</ion-label>
-      <ion-input formControlName="Age"></ion-input>
+      <ion-input formControlName="Price"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Comprador</ion-label>
-      <ion-input formControlName="Address"></ion-input>
+      <ion-label position="floating">Link Aliexpress</ion-label>
+      <ion-input formControlName="AliexpressLink"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Link Imagen</ion-label>
+      <ion-input formControlName="LinkImage"></ion-input>
+    </ion-item>
+
 
     <ion-item>
       <ion-button (click)="CreateRecord()" [disabled]="productForm.invalid">
@@ -42,10 +48,12 @@
     <span *ngIf="!item.isEdit; else elseBlock">
       <ion-card-header>
         <ion-card-title>{{item.Name}}</ion-card-title>
-        <ion-card-subtitle>Precio: {{item.Age}}</ion-card-subtitle>
-        <ion-card-subtitle>Para: {{item.Address}}</ion-card-subtitle>
+        <ion-card-subtitle>Precio: {{item.Price}}</ion-card-subtitle>
+
       </ion-card-header>
       <ion-card-content>
+
+        <img src="{{item.LinkImage}}" alt="">
 
         <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
           <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
@@ -56,8 +64,8 @@
 
         </ion-button>
 
-        <ion-button shape="round" color="danger" size="small" href="{{item.Address}}">
-          <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+        <ion-button shape="round" color="danger" size="small" href="{{item.AliexpressLink}}">
+          <ion-icon size="small" slot="icon-only" name="link-outline"></ion-icon>
 
         </ion-button>
 
@@ -91,12 +99,16 @@
           <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label><strong>Age</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAge"></ion-input>
+          <ion-label><strong>Price</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditPrice"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label><strong>Address</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAddress"></ion-input>
+          <ion-label><strong>AliexpressLink</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditAliexpressLink"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>ImageLink</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditLinkImage"></ion-input>
         </ion-item>
       </ion-card-content>
     </ng-template>

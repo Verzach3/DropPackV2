@@ -4,8 +4,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 interface ProductData {
   Name: string;
-  Age: number;
-  Address: string;
+  Price: number;
+  AliexpressLink: string;
+  LinkImagen: string;
 }
 
 @Component({
@@ -28,8 +29,9 @@ export class HomePage {
   ngOnInit() {
     this.productForm = this.fb.group({
       Name: ['', [Validators.required]],
-      Age: ['', [Validators.required]],
-      Address: ['', [Validators.required]],
+      Price: ['', [Validators.required]],
+      AliexpressLink: ['', [Validators.required]],
+      LinkImage: ['', [Validators.required]],
     });
 
     this.firebaseService.read_products().subscribe((data) => {
@@ -38,8 +40,9 @@ export class HomePage {
           id: e.payload.doc['id'],
           isEdit: false,
           Name: e.payload.doc.data()['Name'],
-          Age: e.payload.doc.data()['Age'],
-          Address: e.payload.doc.data()['Address'],
+          Price: e.payload.doc.data()['Price'],
+          AliexpressLink: e.payload.doc.data()['AliexpressLink'],
+          LinkImage: e.payload.doc.data()['LinkImage']
         };
       });
     });
@@ -63,15 +66,17 @@ export class HomePage {
   EditRecord(record){
     record.isEdit = true;
     record.EditName = record.Name;
-    record.EditAge = record.Age;
-    record.EditAddress = record.Address;
+    record.EditPrice = record.Price;
+    record.EditAliexpressLink = record.AliexpressLink;
+    record.EditLinkImage = record.LinkImage;
   }
 
   UpdateRecord(recordRow) {
     let record = {};
     record['Name'] = recordRow.EditName;
-    record['Age'] = recordRow.EditAge;
-    record['Address'] = recordRow.EditAddress;
+    record['Price'] = recordRow.EditPrice;
+    record['AliexpressLink'] = recordRow.EditAliexpressLink;
+    record['LinkImage'] = recordRow.EditLinkImage;
     this.firebaseService.update_product(recordRow.id, record);
     recordRow.isEdit = false;
   }
